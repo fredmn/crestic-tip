@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Thu Jun 24 15:26:50 CEST 2010
+onejar.license.required=false
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=/Applications/ImageJ/plugins/crestic_fat.jar
+manifest.mergeall=true
+manifest.mainclass=
+manifest.file=<createnew>
+jarname.isextern=true
+onejar.expand=
+excludes=<jar|ij-1.43.jar>
+includes=

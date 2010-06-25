@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="MacRoman" standalone="no"?>
+<jardesc>
+    <jar path="/Applications/ImageJ/plugins/tip_.jar"/>
+    <options buildIfNeeded="true" compress="false" descriptionLocation="/tip/tip.jardesc" exportErrors="false" exportWarnings="false" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="false" exportJavaFiles="true" exportOutputFolder="true">
+        <file path="/tip/.DS_Store"/>
+        <javaElement handleIdentifier="=tip/src"/>
+        <file path="/tip/.classpath"/>
+        <file path="/tip/.project"/>
+    </selectedElements>
+</jardesc>
