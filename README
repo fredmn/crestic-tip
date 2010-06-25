@@ -1,7 +1,11 @@
-Image Processing and Analysis
+Image processing and analysis - Computer Vision
 
-ImageJ Library and Plugins
+Implementation of algorithms and methods developed by CReSTIC Team,
+provided as ImageJ Library and Plugins.
 
-from CReSTIC Lab
+(see http://pixel-shaker.fr/fr/recherches/publications)
 
-by F. Morain-Nicolier
+ImageJ Real Valued Local Dissimilarity Map
+CReSTIC - Univ. Reims-Champagne-Ardenne
+IUT de Troyes - Made in France
+{frederic.nicolier,jerome.landre}@univ-reims.fr
