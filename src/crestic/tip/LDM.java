@@ -27,7 +27,11 @@ public class LDM {
 	}
 	
 	public static FloatProcessor RVLDM (ImageProcessor A, ImageProcessor B, int cuts) {
-		// todo : Faut-il normaliser A et B pour Žviter une explosion des valeurs?
-		return ldm(A, B, DT.RVDTtoForeground(A, cuts), DT.RVDTtoForeground(B, cuts));
+		Double m = Math.max(A.getMax(), B.getMax());
+		ImageProcessor Anorm = A.duplicate();
+		ImageProcessor Bnorm = B.duplicate();
+		Anorm.multiply(1 / m);
+		Bnorm.multiply(1 / m);
+		return ldm(Anorm, Bnorm, DT.RVDTtoForeground(A, cuts), DT.RVDTtoForeground(B, cuts));
 	}	
 }

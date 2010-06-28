@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.io.*;
 import java.text.*;
 
+import crestic.tip.LDM;
+
 // ImageJ Real Valued Local Dissimilarity Map //
 // Texture attributes //
 // CReSTIC - Univ. Reims-Champagne-Ardenne //
@@ -117,8 +119,6 @@ public class RVLDM_attributes implements PlugIn {
 	}
 	
 	public void ComputeAttributes(ImageProcessor A, ImageProcessor B, int cuts) {
-		// todo: use DT to foreground and not DT to background !!	
-		// Resize images to same size
 		ImageProcessor imgA, imgB;
 		if (A.getWidth() * A.getHeight() >= B.getWidth() * B.getHeight()) {
 			// A is bigger than B : resize B to A
@@ -129,9 +129,7 @@ public class RVLDM_attributes implements PlugIn {
 			imgA = A.resize(B.getWidth(), B.getHeight());
 			imgB = B;
 		}
-		RVLDM_ rvldm = new RVLDM_();
-		// glcm needs ByteProcessor -> scaling?
-		ByteProcessor ldm = (ByteProcessor) rvldm.RVLDM(imgA, imgB, cuts).convertToByte(false); // doscaling = true
+		ByteProcessor ldm = (ByteProcessor) LDM.RVLDM(imgA, imgB, cuts).convertToByte(false); // doscaling = true
 		GLCM_Texture glcm = new GLCM_Texture();
 		glcm.run(ldm);
 	}
