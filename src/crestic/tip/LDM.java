@@ -5,6 +5,7 @@ import static crestic.tip.prelude._max;
 import static crestic.tip.prelude._mult;
 import ij.process.BinaryProcessor;
 import ij.process.FloatProcessor;
+import ij.process.FloatStatistics;
 import ij.process.ImageProcessor;
 
 public class LDM {
@@ -27,11 +28,15 @@ public class LDM {
 	}
 	
 	public static FloatProcessor RVLDM (ImageProcessor A, ImageProcessor B, int cuts) {
-		Double m = Math.max(A.getMax(), B.getMax());
-		ImageProcessor Anorm = A.duplicate();
-		ImageProcessor Bnorm = B.duplicate();
-		Anorm.multiply(1 / m);
-		Bnorm.multiply(1 / m);
-		return ldm(Anorm, Bnorm, DT.RVDTtoForeground(A, cuts), DT.RVDTtoForeground(B, cuts));
+//		Double m = Math.max(A.getMax(), B.getMax());
+		ImageProcessor Anorm = A.convertToFloat();
+		ImageProcessor Bnorm = B.convertToFloat();
+		FloatStatistics Astats = new FloatStatistics(Anorm);
+		FloatStatistics Bstats = new FloatStatistics(Bnorm);
+		Anorm.add(- Astats.mean);
+		Anorm.multiply(1.0 / Astats.stdDev);
+		Bnorm.add(- Bstats.mean);
+		Bnorm.multiply(1.0 / Bstats.stdDev);
+		return ldm(Anorm, Bnorm, DT.RVDTtoForeground(Anorm, cuts), DT.RVDTtoForeground(Bnorm, cuts));
 	}	
 }

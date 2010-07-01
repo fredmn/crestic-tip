@@ -36,7 +36,6 @@ public class LDM_ implements PlugInFilter {
 
 		int s1Index=0;	// image 1 index in ImageJ list
 		int s2Index=0;	// image 2 index in ImageJ list
-		int cuts=32; // number of cuts in gray-levels
 		int i=0;
 		int[] wList = WindowManager.getIDList();
 
@@ -60,13 +59,11 @@ public class LDM_ implements PlugInFilter {
 			GenericDialog gd = new GenericDialog(":");
 			gd.addChoice("Image A: ", titles, titles[0]);
 			gd.addChoice("Image B: ", titles, titles[1]);
-			gd.addNumericField("number of cuts: ", (double) cuts, 0);
 			gd.showDialog();
 			if (gd.wasCanceled()) return;
 
-			s1Index=gd.getNextChoiceIndex();	// index of image(s) window
-			s2Index=gd.getNextChoiceIndex();	// index of image(s) window
-			cuts = (int)gd.getNextNumber();
+			s1Index = gd.getNextChoiceIndex();	// index of image(s) window
+			s2Index = gd.getNextChoiceIndex();	// index of image(s) window
 
 			IJ.selectWindow(wList[s1Index]);
 			imgA = IJ.getImage();
@@ -75,9 +72,9 @@ public class LDM_ implements PlugInFilter {
 
 		}
 
-		imp = new ImagePlus("Real Valued Local Dissimilarity Map", 
-				LDM.binaryLDM((BinaryProcessor) imgA.getProcessor(),
-						(BinaryProcessor) imgB.getProcessor()));
+		imp = new ImagePlus("Local Dissimilarity Map", 
+				LDM.binaryLDM(new BinaryProcessor((ByteProcessor) imgA.getProcessor()),
+						 new BinaryProcessor((ByteProcessor) imgB.getProcessor())));
 		imp.changes=false;
 		imp.show();
 	}
