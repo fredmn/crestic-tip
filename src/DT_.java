@@ -70,7 +70,7 @@ public class DT_ implements PlugInFilter {
 		IJ.write("Universite de Reims-Champagne-Ardenne");
 		IJ.write("version "+version+" - "+date);
 		IJ.write("");
-		IJ.write("from I. S. Molchanov and P. Ter‡n, Distance transforms for");
+		IJ.write("from I. S. Molchanov and P. Teran, Distance transforms for");
 		IJ.write(" real-valued functions, J. Math. Anal. Appl., iss. 278,");
 		IJ.write(" pp. 472-484, 2003.");
 		IJ.write("-------------------------------------------------------------");
